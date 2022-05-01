@@ -19,11 +19,13 @@ spring:
              uri: lb://USER-SERVICE
              predicates:
                # Controller level GetMapping Path
-               - Path=/api/users/**
+#               - Path=/api/users/**
+               - Path=/USER-SERVICE/api/users/**
              filters:
                # URL segment in PrefixPath must not be included in URL (localhost:9191/users NOT localhost:9191/api/users)
 #               - PrefixPath=/api
                - RemoveRequestHeader=Cookie
+               - RewritePath=/USER-SERVICE/api/users/**, /api/users/**
                  
            - id: ACCOUNT-MANAGEMENT-SERVICE
              uri: lb://ACCOUNT-MANAGEMENT-SERVICE
