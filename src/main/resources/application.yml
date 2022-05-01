@@ -18,12 +18,18 @@ spring:
            - id: USER-SERVICE
              uri: lb://USER-SERVICE
              predicates:
-               - Path=/users/***
+               - Path=/users/**
+             filters:
+               - PrefixPath=/api
+               - RemoveRequestHeader=Cookie
                  
            - id: ACCOUNT-MANAGEMENT-SERVICE
              uri: lb://ACCOUNT-MANAGEMENT-SERVICE
              predicates:
                - Path=/accounts/**
+             filters:
+               - PrefixPath=/api
+               - RemoveRequestHeader=Cookie*
 #
 #  main:
 #     web:
