@@ -37,7 +37,7 @@ spring:
              filters:
                # URL segment in PrefixPath must not be included in URL (localhost:9191/users NOT localhost:9191/api/users)
 #               - PrefixPath=/api
-               - RemoveRequestHeader=Cookie*
+               - RemoveRequestHeader=Cookie
 #
 #  main:
 #     web:
