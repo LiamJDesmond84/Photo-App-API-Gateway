@@ -18,17 +18,19 @@ spring:
            - id: USER-SERVICE
              uri: lb://USER-SERVICE
              predicates:
-               - Path=/users/**
+               - Path=/api/users/**
              filters:
-               - PrefixPath=/api
+               # URL segment in PrefixPath must not be included in URL (localhost:9191/users  NOT localhost:9191/api/users)
+#               - PrefixPath=/api
                - RemoveRequestHeader=Cookie
                  
            - id: ACCOUNT-MANAGEMENT-SERVICE
              uri: lb://ACCOUNT-MANAGEMENT-SERVICE
              predicates:
-               - Path=/accounts/**
+               - Path=/api/accounts/**
              filters:
-               - PrefixPath=/api
+               # URL segment in PrefixPath must not be included in URL (localhost:9191/users  NOT localhost:9191/api/users)
+#               - PrefixPath=/api
                - RemoveRequestHeader=Cookie*
 #
 #  main:
