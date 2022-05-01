@@ -9,10 +9,22 @@ spring:
          enabled: true
   cloud:
      gateway:
-        discovery:
-           locator:
-              enabled: true
+        # discovery locator is the auto-alternative to manually configuring the API-Routes
+#        discovery:
+#           locator:
+#              enabled: true
 #              lower-case-service-id: true
+          routes:
+           - id: USER-SERVICE
+             uri: lb://USER-SERVICE
+             predicates:
+               - Path=/users/***
+                 
+           - id: ACCOUNT-MANAGEMENT-SERVICE
+             uri: lb://ACCOUNT-MANAGEMENT-SERVICE
+             predicates:
+               - Path=/accounts/**
+#
 #  main:
 #     web:
 #        web-application-type: reactive
