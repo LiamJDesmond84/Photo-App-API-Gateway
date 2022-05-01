@@ -10,10 +10,11 @@ spring:
   cloud:
      gateway:
         # discovery locator is the auto-alternative to manually configuring the API-Routes
-#        discovery:
-#           locator:
-#              enabled: true
-#              lower-case-service-id: true
+        # Also works with manual routes enabled as well for both (/USER-SERVICE/users/ & /users/)
+          discovery:
+             locator:
+                enabled: true
+#                lower-case-service-id: true
           routes:
            - id: USER-SERVICE
              uri: lb://USER-SERVICE
