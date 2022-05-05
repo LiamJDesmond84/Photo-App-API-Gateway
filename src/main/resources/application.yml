@@ -23,13 +23,14 @@ spring:
                - Path=/api/users/status/check
 #               - Path=/api/users/**
 #               - Path=/USER-SERVICE/api/users/status/check
+               - Header=Authorization, Bearer (.*)
              filters:
                # URL segment in PrefixPath must not be included in URL (localhost:9191/users NOT localhost:9191/api/users)
 #               - PrefixPath=/api
                - RemoveRequestHeader=Cookie
 #               - RewritePath=/USER-SERVICE/api/users/status/check, /api/users/status/check
 #               - RewritePath=/USER-SERVICE/(?<segment>.*), /$\{<segment>}
-               - Header=Authorization, Bearer (.*)
+
                  
            - id: ACCOUNT-MANAGEMENT-SERVICE
              uri: lb://ACCOUNT-MANAGEMENT-SERVICE
