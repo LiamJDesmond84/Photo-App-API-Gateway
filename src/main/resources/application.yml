@@ -110,4 +110,4 @@ eureka:
 token:
    # 10 days
    expiration_time: 864000000
-   secret: heyN0w619
+   secret: heyN0w61
