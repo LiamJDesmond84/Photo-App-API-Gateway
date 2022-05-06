@@ -45,8 +45,14 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
 			
 			ServerHttpRequest request = exchange.getRequest();
 			
+			// Just for testing....
+//			org.springframework.http.HttpHeaders test = exchange.getRequest().getHeaders();
+//			System.out.println(test);
+//			org.springframework.http.HttpHeaders test2 = request.getHeaders();
+			
+			
 //			if(request.getHeaders().containsKey("Authorization")) {
-			if(request.getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
+			if(!request.getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
 				// ServerWebExchange, String, HttpStatus for onError method below
 				return onError(exchange, "No authorization header", HttpStatus.UNAUTHORIZED);
 			}

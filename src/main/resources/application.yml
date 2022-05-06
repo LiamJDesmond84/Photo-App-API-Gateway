@@ -11,9 +11,9 @@ spring:
      gateway:
         # discovery locator is the auto-alternative to manually configuring the API-Routes
         # Also works with manual routes enabled as well for both (/USER-SERVICE/users/ & /users/)
-          discovery:
-             locator:
-                enabled: true
+#          discovery:
+#             locator:
+#                enabled: false
 #                lower-case-service-id: true
           routes:
            - id: USER-SERVICE-status-check
