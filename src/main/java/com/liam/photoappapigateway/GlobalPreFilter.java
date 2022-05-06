@@ -1,9 +1,12 @@
 package com.liam.photoappapigateway;
 
+import java.util.Set;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 
@@ -22,6 +25,31 @@ public class GlobalPreFilter implements GlobalFilter {
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
 		logger.info("First pre-filter executed...");
+		
+		String requestPath = exchange.getRequest().getPath().toString();
+		
+		logger.info("Request Path: " + requestPath);
+		
+		
+		HttpHeaders exchangeHeaders = exchange.getRequest().getHeaders();
+		
+		// To read the key:value of HttpHeaders we must first get a set with header keys from it
+		
+		Set<String> headerNames = exchangeHeaders.keySet();
+		
+		logger.info("Http HEADERS: " + exchangeHeaders);
+		
+		// Now iterate over the header keys & get the value of each header
+		
+		headerNames.forEach((x) -> {
+			
+			String headerValue = exchangeHeaders.getFirst(x);
+			
+			logger.info("Header Value: " + headerValue);
+			
+		});
+		
+
 		
 		return chain.filter(exchange);
 	}
