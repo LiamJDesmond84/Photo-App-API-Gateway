@@ -106,3 +106,8 @@ eureka:
   instance:
     hostname: localhost
     prefer-ip-address: true
+    
+token:
+   # 10 days
+   expiration_time: 864000000
+   secret: heyN0w619
