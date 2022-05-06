@@ -38,7 +38,7 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
 	@Override
 	public GatewayFilter apply(Config config) {
 		
-		// exchange - Reads HttpRequest object
+		// exchange - Reads the details of HttpRequest object
 		// chain - Gateway filter chain - delegates flow to the next filter & chain - Kind of like a next?
 		
 		return (exchange, chain) -> {
