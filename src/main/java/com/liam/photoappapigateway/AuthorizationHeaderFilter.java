@@ -89,11 +89,20 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
 		
 		// Jwts.parser() from dependencies
 		// Making sure secret key in properties matches secret key(signature) from create/register method for users(AuthenticationFilter .signWith)
-		String subject = Jwts.parser()
-		.setSigningKey(env.getProperty("token.secret"))
-		.parseClaimsJws(jwt)
-		.getBody()
-		.getSubject();
+		String subject = null;
+		
+		try {
+			
+			subject = Jwts.parser()
+			.setSigningKey(env.getProperty("token.secret"))
+			.parseClaimsJws(jwt)
+			.getBody()
+			.getSubject();
+		
+		} catch (Exception ex) {
+			
+			boolAnswer = false;
+		}
 		
 		if(subject == null || subject.isEmpty()) {
 			boolAnswer = false;
