@@ -13,19 +13,20 @@ import reactor.core.publisher.Mono;
 
 @Component
 public class GlobalPostFilter implements GlobalFilter {
+	
+	final Logger logger = LoggerFactory.getLogger(GlobalPostFilter.class);
+	
+	// exchange - Reads the details of HttpRequest object
+	// chain - Gateway filter chain - delegates flow to the next filter & chain - Kind of like a next?
 
+	
 	@Override
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-		
-		final Logger logger = LoggerFactory.getLogger(GlobalPostFilter.class);
-		
-		// exchange - Reads the details of HttpRequest object
-		// chain - Gateway filter chain - delegates flow to the next filter & chain - Kind of like a next?
 		
 
 		return chain.filter(exchange).then(Mono.fromRunnable(() -> {
 			
-			logger.info("First POST-filter executed...")
+			logger.info("First POST-filter executed...");
 			
 		}));
 	}
