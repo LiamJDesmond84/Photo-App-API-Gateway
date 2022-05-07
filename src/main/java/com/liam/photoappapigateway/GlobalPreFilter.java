@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.core.Ordered;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
@@ -15,7 +16,7 @@ import reactor.core.publisher.Mono;
 // Pre-filters are triggered before ANY route in this service
 
 @Component
-public class GlobalPreFilter implements GlobalFilter {
+public class GlobalPreFilter implements GlobalFilter, Ordered {
 	
 	final Logger logger = LoggerFactory.getLogger(GlobalPreFilter.class);
 
@@ -54,6 +55,14 @@ public class GlobalPreFilter implements GlobalFilter {
 
 		
 		return chain.filter(exchange);
+	}
+
+	@Override
+	public int getOrder() {
+		
+		// The lower the # in POST-Filters the higher the priority
+		
+		return 0;
 	}
 
 }

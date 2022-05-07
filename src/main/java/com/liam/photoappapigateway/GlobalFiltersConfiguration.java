@@ -6,6 +6,7 @@ import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+
 import reactor.core.publisher.Mono;
 
 // Pre-filters & Post-filters in one
@@ -18,6 +19,7 @@ final Logger logger = LoggerFactory.getLogger(GlobalFiltersConfiguration.class);
 	// exchange - Reads the details of HttpRequest object
 	// chain - Gateway filter chain - delegates flow to the next filter & chain - Kind of like a next?
 
+//	@Order(2)
 	@Bean
 	public GlobalFilter secondPrefilter() {
 		
@@ -35,6 +37,7 @@ final Logger logger = LoggerFactory.getLogger(GlobalFiltersConfiguration.class);
 	}
 	
 	
+//	@Order(1)
 	@Bean
 	public GlobalFilter thirdPrefilter() {
 		
