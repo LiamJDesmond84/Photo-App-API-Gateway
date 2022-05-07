@@ -26,7 +26,7 @@ public class GlobalPreFilter implements GlobalFilter {
 	@Override
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
-		logger.info("First PRE-filter executed...");
+		logger.info("First PRE-Filter executed...");
 		
 		String requestPath = exchange.getRequest().getPath().toString();
 		

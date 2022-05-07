@@ -26,7 +26,7 @@ public class GlobalPostFilter implements GlobalFilter {
 
 		return chain.filter(exchange).then(Mono.fromRunnable(() -> {
 			
-			logger.info("First POST-filter executed...");
+			logger.info("First POST-Filter executed...");
 			
 		}));
 	}
