@@ -8,6 +8,9 @@ spring:
       restart:
          enabled: true
   cloud:
+     # Instead of bootstrap.yml
+     config:
+        import: "optional:configserver:http://localhost:8888"
      gateway:
         # discovery locator is the auto-alternative to manually configuring the API-Routes
         # Also works with manual routes enabled as well for both (/USER-SERVICE/users/ & /users/)
