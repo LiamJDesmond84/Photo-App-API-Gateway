@@ -12,6 +12,8 @@ import org.springframework.web.server.ServerWebExchange;
 
 import reactor.core.publisher.Mono;
 
+// Pre-filters are triggered before ANY route in this service
+
 @Component
 public class GlobalPreFilter implements GlobalFilter {
 	
@@ -24,7 +26,7 @@ public class GlobalPreFilter implements GlobalFilter {
 	@Override
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
-		logger.info("First pre-filter executed...");
+		logger.info("First PRE-filter executed...");
 		
 		String requestPath = exchange.getRequest().getPath().toString();
 		
@@ -37,7 +39,7 @@ public class GlobalPreFilter implements GlobalFilter {
 		
 		Set<String> headerNames = exchangeHeaders.keySet();
 		
-		logger.info("Http HEADERS: " + exchangeHeaders);
+		logger.info("Http HEADER: " + exchangeHeaders);
 		
 		// Now iterate over the header keys & get the value of each header
 		
