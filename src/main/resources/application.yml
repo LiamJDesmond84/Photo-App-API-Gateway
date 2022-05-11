@@ -119,3 +119,10 @@ token:
    # 10 days
    expiration_time: 864000000
    secret: heyN0w619
+   
+# For actuator   
+management:
+   endpoints:
+      web:
+         exposure:
+            include: beans, health, routes, httptrace
