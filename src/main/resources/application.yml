@@ -125,4 +125,4 @@ management:
    endpoints:
       web:
          exposure:
-            include: beans, health, routes, httptrace
+            include: beans, health, routes, httptrace, gateway
