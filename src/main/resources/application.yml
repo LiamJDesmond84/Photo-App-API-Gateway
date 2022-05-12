@@ -125,7 +125,7 @@ management:
    endpoints:
       web:
          exposure:
-            include: beans, health, routes, httptrace, gateway
+            include: beans, health, routes, httptrace, gateway, mappings
    # Actuator httptrace
    auditevents:
       enable: true
