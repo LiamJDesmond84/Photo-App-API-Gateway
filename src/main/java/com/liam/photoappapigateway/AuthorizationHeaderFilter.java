@@ -15,6 +15,8 @@ import com.google.common.net.HttpHeaders;
 import io.jsonwebtoken.Jwts;
 import reactor.core.publisher.Mono;
 
+
+// Works with spring.gateway.routes.filters
 @Component
 public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<AuthorizationHeaderFilter.Config> {
 	
