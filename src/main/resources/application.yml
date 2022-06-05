@@ -53,6 +53,14 @@ spring:
                - Path=/api/users/login
              filters:
                - RemoveRequestHeader=Cookie
+               
+           - id: USER-SERVICE-albums
+             uri: lb://USER-SERVICE
+             predicates:
+               # Controller level PostMapping Path
+               - Path=/api/users/albums/**
+             filters:
+               - RemoveRequestHeader=Cookie
   
                
            - id: USER-SERVICE-update
